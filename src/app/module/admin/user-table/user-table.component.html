@@ -1,0 +1,62 @@
+<!-- <div>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</div> -->
+<table class="table table-bordered ">
+    <thead style="background-color:whitesmoke">
+      <tr >
+        <th>college</th>
+        <th>Register No</th>
+        <th>department</th>
+        <th>email</th>
+        <th>Name</th>
+        
+        
+        <th>Phone Number</th>
+        <th>Guardian Name</th>
+        <th> Father Email</th>
+        <th>Father contact</th>
+        <th>Payment Method</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | orderBy: order">
+        <th>{{user.college}}</th>
+        <td>
+          {{ user.registerNo }}
+        </td>
+        <td>
+          {{ user.department }}
+        </td>
+        <td>
+          {{ user.email  }}
+        </td>
+        
+       
+        <td>
+          {{ user.firstName }} {{user.lastName}}
+        </td>
+        <td>
+          {{ user.phoneNumber}}
+        </td>
+        <td>
+          {{ user.guardianFirstName }}  {{ user.guardianLastName }}
+        </td>
+        <td>
+          {{user.guardianEmail}}
+         </td>
+         <td>
+          {{user.guardianPhoneNumber}}
+         </td>
+        <td>
+         {{user.PaymentMode}}
+        </td>
+
+
+        
+
+       
+      </tr>
+
+    </tbody>
+  </table>

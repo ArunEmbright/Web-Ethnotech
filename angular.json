@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "f49dec2d-bbb2-4b24-9f55-f614258767ce"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,9 +34,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input":  "node_modules/animate.css/animate.min.css"
+              },
+              {
+                  "input":   "src/styles.scss"
+              }
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "src/assets/js/jquery.js" 
+            ]
           },
           "configurations": {
             "production": {
@@ -69,6 +81,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ethnotech:build"
+            
           },
           "configurations": {
             "production": {

@@ -1,0 +1,10 @@
+ 
+{
+    "/api/*": {
+        "target": "https://id-staging.eduvanz.com/api/instantdecision/createQuickLead",
+      "pathRewrite": { "^/api": "" },
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
