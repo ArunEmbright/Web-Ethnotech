@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
-
+import { AuthAdminService } from 'src/app/guards/admin.guard'
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
@@ -12,7 +12,7 @@ export class UserTableComponent implements OnInit {
   users:User[];
   // dataSource = new MatTableDataSource();
 order:any ="college";
-  constructor(private list: UserService) { }
+  constructor(private admin: AuthAdminService,private list: UserService) { }
 
   ngOnInit() {
     this.list.getUser().subscribe((users:User[]|any)=>{
@@ -29,7 +29,9 @@ order:any ="college";
   //   }
   //   this.dataSource.filter = JSON.stringify(filter)
   // }
- 
+ onSubmit(){
+   this.admin.signOut()
+ }
 
   }
 

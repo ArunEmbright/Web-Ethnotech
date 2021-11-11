@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PrivacyPolicyComponent } from './module/privacy-policy/privacy-policy.component';
 import { TermsConditionComponent } from './module/terms-condition/terms-condition.component'
 import { SuccessComponent } from './module/success/success.component';
+import { AuthAdminService } from './guards/admin.guard';
 const routes: Routes = [
  
    {
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+     canActivate:[AuthAdminService],
      loadChildren: () => import('./module/admin/admin.module').then(m => m.AdminModule)
   },
   {

@@ -17,32 +17,36 @@ declare var $: any;
 })
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
+  collegeValue:any
+
+ 
   submitted = false;
   event: any;
   error = '';
   Location=[
-    {id:"1", name:"bangalore"}, {id:"1", name:"Mysore"}, {id:"1", name:"Thandavapura"},
+     {id:1, name:"Mysore"}, {id:2, name:"Thandavapura"},
   ]
-  college: any = [
-    { id: '1', name: 'Maharaja Institute of Technology Mysore' },
-    { id: '2', name: 'Maharaja Institute of Technology Thandavapura ' },
-    { id: '3', name: 'GSSS Institute of Engineering and Technology for Women Mysore' },
-    { id: '4', name: "St. Philomena's College Mysore" },
-    { id: '5', name: 'Yenepoya Institute Of Technology Mysore' },
+  
+  public college: any = [
+    { id: 1, name: 'Maharaja Institute of Technology Mysore', collegeID:1 },
+    { id: 2, name: 'Maharaja Institute of Technology Thandavapura ' ,collegeID:2},
+    { id: 3, name: 'GSSS Institute of Engineering and Technology for Women Mysore', collegeID:1},
+    { id: 4, name: "St. Philomena's College Mysore", collegeID:1},
+    { id: 5, name: 'Yenepoya Institute Of Technology Mysore' ,collegeID:1},
   ];
   department: any = [
-    { id: '1', name: 'Computer Science Engineering - 2nd Year' },
-    { id: '2', name: 'Computer Science Engineering - 3rd Year' },
-    { id: '3', name: 'Information Science Engineering - 2nd Year' },
-    { id: '4', name: 'Information Science Engineering - 3rd Year' },
-    { id: '5', name: 'Electronics and Communication Engineering - 2nd Year' },
-    { id: '6', name: 'Electronics and Communication Engineering - 3rd Year' },
-    { id: '7', name: 'Civil Engineering - 2nd Year' },
-    { id: '8', name: 'Civil Engineering - 3rd Year' },
-    { id: '9', name: 'Mechanical Engineering - 2nd Year' },
-    { id: '10', name: 'Mechanical Engineering - 3rd Year' },
+    { id: 1, name: 'Computer Science Engineering 2', departmentID:1},
+    { id: 2, name: 'Computer Science Engineering 3' , departmentID:2},
+    { id: 3, name: 'Information Science Engineering ' , departmentID:1},
+    { id: 4, name: 'Information Science Engineering' , departmentID:2},
+    { id: 5, name: 'Electronics and Communication Engineering ' , departmentID:1},
+    { id: 6, name: 'Electronics and Communication Engineering', departmentID:2 },
+    { id: 7, name: 'Civil Engineering ' , departmentID:1},
+    { id: 8, name: 'Civil Engineering' , departmentID:2},
+    { id: 9, name: 'Mechanical Engineering ', departmentID:1 },
+    { id: 10, name: 'Mechanical Engineering' , departmentID:2},
   ];
-  years: any = ['first Year', 'second year', 'last year'];
+  year: any = [ {id:1,name:'second year'} ,{id:2,name:'Third year'}];
   paymentMode: any = [
     'Credit Card',
     'Debit Card',
@@ -52,8 +56,12 @@ export class RegisterComponent implements OnInit {
     'UPI',
   ];
   public listCollegeDropdownData = [];
+  public listDepartment =[]
+  departmentID:number;
+  collegeID:number;
   U: UserModel = new UserModel('','','','','','','','','','','','','','','',''  );
-
+  collegeListDrop =[]
+  departmentListDrop=[]
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -66,6 +74,7 @@ export class RegisterComponent implements OnInit {
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required]],
       phone: ['', [Validators.required]],
+      location: ['', [Validators.required]],
       college: ['', [Validators.required]],
       register_no: ['', [Validators.required]],
       father_name: ['', [Validators.required]],
@@ -115,4 +124,26 @@ export class RegisterComponent implements OnInit {
   Course(event: any) {
     this.U.department = event.target.value;
   }
+ public locationSet(){
+   console.log( this.registrationForm.value.location)
+  this.collegeID = + this.registrationForm.value.location
+
+    this.collegeListDrop = this.college.filter(
+      (c:any) => c.collegeID === this.collegeID
+      
+      );
+    //  console.log(this.collegeListDrop)
+  }
+
+  public yearSet(){
+    console.log( this.registrationForm.value.location)
+   this.departmentID = + this.registrationForm.value.year
+ 
+     this.departmentListDrop = this.department.filter(
+       (c:any) => c.departmentID === this.departmentID
+       
+       );
+     
+   }
+ 
 }

@@ -6,13 +6,14 @@ import { RegisterComponent } from './register/register.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { EmiComponent } from './emi/emi.component';
 import { FooterComponent } from '../footer/footer.component';
-
+import { LoginComponent } from './login/login.component'
 @NgModule({
   declarations: [
     RegisterComponent,
     SubscribeComponent,
     EmiComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

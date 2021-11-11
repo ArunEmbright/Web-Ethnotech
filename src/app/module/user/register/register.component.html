@@ -1,12 +1,11 @@
-<div class="page margintop12" style="overflow-x:scroll">
+<div class="page margintop3" style="overflow-x: hidden;">
   <div class="">
-    <div class="card justify-content-center boxshadow title-header">
-      <div style="display: flex; align-content: space-around;">
-        <img src="assets/images/media/logo2.png" class="header-brand-img desktop-logo h-100 loginlogo" />
-        <div class="text-center title-pl">
-          <h2 class="fontweigt700 pt-4">
-            INDUSTRIAL INSTITUTE OUTREACH PROGRAM
-          </h2>
+
+    <div class="card boxshadow title-header">
+      <div class="text-center title-pl" style="display: flex; margin-left:12rem">
+        <img src="assets/images/media/logo2.png" class="header-brand-img desktop-logo h-100 loginlogo">
+        <div >
+          <h2 class="fontweigt700 pt-4"> INDUSTRIAL INSTITUTE OUTREACH PROGRAM</h2>
         </div>
       </div>
     </div>
@@ -14,7 +13,7 @@
     <!-- container opened -->
     <div class="container">
       <div class="row">
-        <div class="col-xl-8 justify-content-center text-center form-align">
+        <div class="col-xl-5 justify-content-center text-center form-align">
           <div class="
               card
               padleftright
@@ -31,97 +30,133 @@
                       <h2 class="fontweigt700 text-center form-title">
                         Registration Form
                       </h2>
+                      <!-- <p>hello:{{collegeListDrop}}</p> -->
                     </div>
+                    <div class="form-group">
+                      <select class="form-control select2 w-100 borderround11 mt-4" formControlName="location" placeholder="Location" (change)="locationSet()">
+                       
+                        <option value="">Location</option>
+                        <option class="dropdown-item" *ngFor="let payment of Location" [value]="payment.id"> {{
+                          payment.name }}
 
-                    <select class="form-control select2 w-100 borderround11" formControlName="college" (change)="College($event)">
-                      <option disabled selected>College</option>
-                      <option>College</option>
-                      <option *ngFor="let year of college" value={{year.id}}>{{year.name}}</option>
-                    </select>
+                      </select>
 
-                    <div class="form-group pt-4">
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control select2 w-100 borderround11 mt-4" formControlName="paymentMode"
+                        (change)="College($event)">
+
+                        <option value="">college</option>
+                        <option class="dropdown-item" *ngFor="let payment of collegeListDrop"> {{ payment.name }}
+
+                      </select>
+
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control select2 w-100 borderround11 mt-4" formControlName="year" (change)="yearSet()">
+                        
+                        <option value="">Year</option>
+                        <option class="dropdown-item" *ngFor="let year of year" [value]="year.id">{{year.name}}</option>
+
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control select2 w-100 borderround11 mt-4" formControlName="paymentMode"
+                        (change)="College($event)">
+
+                        <option value="">Department</option>
+                        <option class="dropdown-item" *ngFor="let payment of departmentListDrop"> {{ payment.name }}
+
+                      </select>
+
+                    </div>
+                    <div class="form-group">
                       <input type="text" formControlName="register_no" class="form-control borderround11"
                         placeholder="USN/Register No." />
-                        <small *ngIf="registrationForm.get('register_no')?.invalid && registrationForm.get('register_no')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Register number is required</small>
+                      <small
+                        *ngIf="registrationForm.get('register_no')?.invalid && registrationForm.get('register_no')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Register number is
+                        required</small>
 
                     </div>
                     <div class="form-group">
-                      <input type="text" formControlName="name" class="form-control borderround11" placeholder="Name" (change)="FirstName($event)" />
-                      <small *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Name is required</small>
+                      <input type="text" formControlName="name" class="form-control borderround11" placeholder="Name"
+                        (change)="FirstName($event)" />
+                      <small *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Name is required</small>
 
                     </div>
                     <div class="form-group">
-                      <input type="text" formControlName="lastName" class="form-control borderround11" (change)="LastName($event)"
-                        placeholder="Last Name" />
-                        <small *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Last Name is required</small>
+                      <input type="text" formControlName="lastName" class="form-control borderround11"
+                        (change)="LastName($event)" placeholder="Last Name" />
+                      <small
+                        *ngIf="registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Last Name is required</small>
 
                     </div>
                     <div class="form-group">
-                      <input type="email" formControlName="email" class="form-control borderround11" (change)="Email($event)"
-                        placeholder="Email" />
-                        <small *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Email is required</small>
+                      <input type="email" formControlName="email" class="form-control borderround11"
+                        (change)="Email($event)" placeholder="Email" />
+                      <small *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Email is required</small>
 
                     </div>
                     <div class="form-group">
-                      <input type="number" formControlName="phone" class="form-control borderround11" (change)="Phone($event)"
-                        placeholder="Contact No." />
-                        <small *ngIf="registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched  " class="text-danger pb-3" style="text-align: left;float: left;">Phone Number is required</small>
+                      <input type="number" formControlName="phone" class="form-control borderround11"
+                        (change)="Phone($event)" placeholder="Contact No." />
+                      <small *ngIf="registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched  "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Phone Number is required</small>
 
                     </div>
 
                     <div class="form-group">
                       <input type="text" formControlName="father_name" class="form-control borderround11"
                         placeholder="Father/Mother/Guardian Name" />
-                        <small *ngIf="registrationForm.get('father_name')?.invalid && registrationForm.get('father_name')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Father/Mother/Guardian Name is required</small>
+                      <small
+                        *ngIf="registrationForm.get('father_name')?.invalid && registrationForm.get('father_name')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Father/Mother/Guardian Name is
+                        required</small>
 
                     </div>
                     <div class="form-group">
                       <input type="text" formControlName="father_last" class="form-control borderround11"
                         placeholder="Father/Mother/Guardian Last Name" />
-                        <small *ngIf="registrationForm.get('father_last')?.invalid && registrationForm.get('father_last')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Father/Mother/Guardian Last Name is required</small>
+                      <small
+                        *ngIf="registrationForm.get('father_last')?.invalid && registrationForm.get('father_last')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Father/Mother/Guardian Last Name
+                        is required</small>
 
                     </div>
                     <div class="form-group">
                       <input type="email" formControlName="father_email" class="form-control borderround11"
                         placeholder="Father Email" />
-                        <small *ngIf="registrationForm.get('father_email')?.invalid && registrationForm.get('father_email')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Father Email is required</small>
+                      <small
+                        *ngIf="registrationForm.get('father_email')?.invalid && registrationForm.get('father_email')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Father Email is required</small>
 
                     </div>
                     <div class="form-group">
                       <input type="number" formControlName="father_phone" class="form-control borderround11"
                         placeholder="Father Contact No." />
-                        <small *ngIf="registrationForm.get('father_phone')?.invalid && registrationForm.get('father_phone')?.touched " class="text-danger pb-3" style="text-align: left;float: left;">Father Phone Number is required</small>
+                      <small
+                        *ngIf="registrationForm.get('father_phone')?.invalid && registrationForm.get('father_phone')?.touched "
+                        class="text-danger pb-3" style="text-align: left;float: left;">Father Phone Number is
+                        required</small>
 
                     </div>
-                    <div class="form-group">
-                    <select class="form-control select2 w-100 borderround11" formControlName="department" (change)="Course($event)">
-                      <option disabled selected>Location</option>
-                      <option>Department</option>
-                      <option *ngFor="let item of Location" value={{item.id}}>{{item.name}}</option>
-                    </select>
-                  </div>
-                    <select class="form-control select2 w-100 borderround11" formControlName="department" (change)="Course($event)">
-                      <option disabled selected>Department</option>
-                      <option>Department</option>
-                      <option *ngFor="let item of department" value={{item.id}}>{{item.name}}</option>
-                    </select>
 
-                    <select class="form-control select2 w-100 borderround11 mt-4" formControlName="year" placeholder="year">
-                      <option selected disabled>Year</option>
-                      <option>Year</option>
-                      <option  class="dropdown-item" *ngFor="let year of years">{{year}}</option>
- 
-                    </select>
+
+
 
                     <select class="form-control select2 w-100 borderround11 mt-4" formControlName="paymentMode">
-                      
+
                       <option>Payment</option>
                       <option class="dropdown-item" *ngFor="let payment of paymentMode"> {{ payment }}
 
                     </select>
 
                     <div class="form-footer mt-1 margintop20 padding38">
-                      <button class="btn btn-info btn-pill" >
+                      <button class="btn btn-info btn-pill">
                         Submit
                       </button>
                     </div>

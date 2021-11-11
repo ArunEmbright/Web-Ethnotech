@@ -9,9 +9,9 @@ import { UserService } from 'src/app/service/user.service';
 export class SuccessComponent implements OnInit {
   public state:any;
   _data:any;
-  public user: UserModel = new UserModel('', '', '', '', '', '', '', '', '', '', '','','','','','');
+
   constructor(private service:UserService) {
-    this.user = JSON.parse(localStorage.getItem('applicant_details') || '{}');
+ 
     window.location.hash = "no-back-button";
 
     // Again because Google Chrome doesn't insert
@@ -25,7 +25,10 @@ export class SuccessComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.service.confirmation(this._data)
+    setTimeout(() => {
+      this.service.confirmation(this._data)
+    }, 1200);
+   
   } 
-
+  // {"college":"Computer Science Engineering 2","name":"anoop","lastName":"anoop","registerNo":"","email":"arunlajayan@gmail.com","contact":"2582585","guardianFirstName":"","guardianEmail":"","department":"","year":"","paymentMode":"","guardianContact":"","lead_id":"","courseId":"","guardianLastName":"","loan_amount":""}
 }
